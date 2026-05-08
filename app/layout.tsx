@@ -3,6 +3,7 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { Instrument_Serif } from "next/font/google";
 import "./globals.css";
+import { SITE_URL, SITE_NAME } from "@/lib/site";
 
 const serif = Instrument_Serif({
   subsets: ["latin"],
@@ -11,10 +12,6 @@ const serif = Instrument_Serif({
   variable: "--font-serif",
   display: "swap",
 });
-
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
-  "https://www.nyravon.com";
 
 const TITLE = "Novaryn — AI-Powered Product Engineering for Startups";
 const DESCRIPTION =
@@ -27,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s — Novaryn",
   },
   description: DESCRIPTION,
-  applicationName: "Novaryn",
+  applicationName: SITE_NAME,
   generator: "Next.js",
   referrer: "origin-when-cross-origin",
   keywords: [
@@ -39,15 +36,15 @@ export const metadata: Metadata = {
     "SaaS development",
     "AI integration",
   ],
-  authors: [{ name: "Novaryn" }],
-  creator: "Novaryn",
-  publisher: "Novaryn",
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
   alternates: {
-    canonical: "/",
+    canonical: SITE_URL,
   },
   openGraph: {
     type: "website",
-    siteName: "Novaryn",
+    siteName: SITE_NAME,
     title: TITLE,
     description: DESCRIPTION,
     url: SITE_URL,
@@ -58,6 +55,7 @@ export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
     creator: "@novaryn",
+    site: "@novaryn",
   },
   robots: {
     index: true,
