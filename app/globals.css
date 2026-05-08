@@ -1,0 +1,235 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #efece5;
+  --fg: #0d0d0e;
+  --muted: #67655f;
+  --line: rgba(13, 13, 14, 0.08);
+  --line-strong: rgba(13, 13, 14, 0.14);
+  --accent: #5a3fff;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-feature-settings: "ss01", "ss03", "cv11";
+  background:
+    radial-gradient(900px 600px at 80% -10%, rgba(90, 63, 255, 0.05), transparent 60%),
+    radial-gradient(800px 600px at 0% 5%, rgba(58, 100, 255, 0.04), transparent 60%),
+    #efece5;
+  cursor: none;
+}
+
+@media (pointer: coarse) {
+  body { cursor: auto; }
+}
+
+::selection {
+  background: rgba(90, 63, 255, 0.20);
+  color: #0d0d0e;
+}
+
+/* Italic serif accent */
+.font-editorial-italic {
+  font-family: var(--font-serif), ui-serif, Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
+
+/* Section index — clay-style giant numbered eyebrow */
+.section-index {
+  font-family: var(--font-serif), ui-serif, Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 0.9;
+  color: rgba(13, 13, 14, 0.55);
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+}
+
+/* Light grids */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(13, 13, 14, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(13, 13, 14, 0.05) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 80%);
+}
+
+.bg-grid-fine {
+  background-image:
+    linear-gradient(to right, rgba(13, 13, 14, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(13, 13, 14, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.bg-dots {
+  background-image: radial-gradient(rgba(13, 13, 14, 0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+  opacity: 0.04;
+}
+
+/* Glass surfaces — light theme */
+.glass-light {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.65) 0%,
+    rgba(239, 236, 229, 0.55) 100%
+  );
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+}
+
+.glass-strong-light {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.85) 0%,
+    rgba(239, 236, 229, 0.78) 100%
+  );
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+}
+
+/* Editorial gradient text on light */
+.gradient-text {
+  background: linear-gradient(180deg, #0d0d0e 0%, #44443e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Hairline gradient border */
+.hairline {
+  position: relative;
+}
+.hairline::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(13, 13, 14, 0.16),
+    rgba(13, 13, 14, 0.04) 40%,
+    rgba(13, 13, 14, 0) 100%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Hairline for dark cards on light bg */
+.hairline-dark {
+  position: relative;
+}
+.hairline-dark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.10),
+    rgba(255, 255, 255, 0.02) 40%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Marquee */
+.marquee-track {
+  width: max-content;
+  display: flex;
+  gap: 3.5rem;
+  animation: marquee 50s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Editorial rule — long horizontal rule used in agency layouts */
+.editorial-rule {
+  height: 1px;
+  background: linear-gradient(to right, rgba(13,13,14,0.18), rgba(13,13,14,0.04) 60%, transparent 100%);
+}
+
+/* Premium button outline (light) */
+.btn-outline-dark {
+  background: transparent;
+  border: 1px solid rgba(13, 13, 14, 0.20);
+  color: #0d0d0e;
+  transition: all 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.btn-outline-dark:hover {
+  border-color: #0d0d0e;
+  background: rgba(13, 13, 14, 0.05);
+}
+
+/* Hide native cursor on interactive elements when custom cursor is on */
+a, button, [data-cursor="hover"] {
+  cursor: none;
+}
+
+/* Custom scrollbar (light) */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(13, 13, 14, 0.10);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(13, 13, 14, 0.20); }
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Word reveal animation */
+.word-reveal {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+.word-reveal > span {
+  display: inline-block;
+  transform: translateY(110%);
+  animation: word-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes word-rise {
+  to { transform: translateY(0); }
+}
