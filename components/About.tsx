@@ -27,7 +27,7 @@ const PILLARS = [
 
 export function About() {
   return (
-    <section id="about" className="relative py-28 md:py-40">
+    <section id="about" className="relative pt-12 md:pt-16 pb-12 md:pb-16">
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 12 }}
@@ -50,7 +50,7 @@ export function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1, ease }}
-          className="mt-12 max-w-[18ch] text-display-xl lowercase font-display text-graphite-900"
+          className="mt-12 max-w-[18ch] text-display-md lowercase font-display text-graphite-900"
         >
           we build software <br />
           like it&rsquo;s <Em>going to last.</Em>

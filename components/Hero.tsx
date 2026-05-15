@@ -3,11 +3,9 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { useRef } from "react";
-import { Container } from "./ui/Container";
+import { FadingVideo } from "./FadingVideo";
 
-const ease = [0.22, 1, 0.36, 1];
-
-/* ------- helpers ----------------------------------------------------- */
+const ease = [0.22, 1, 0.36, 1] as const;
 
 function Word({
   delay,
@@ -19,20 +17,25 @@ function Word({
   children: React.ReactNode;
 }) {
   return (
-    <span className="word-reveal mr-[0.18em]">
-      <motion.span
-        initial={{ y: "110%" }}
-        animate={{ y: "0%" }}
-        transition={{ duration: 1, delay, ease }}
-        className={italic ? "font-serif italic font-normal" : ""}
-      >
-        {children}
-      </motion.span>
-    </span>
+    <motion.span
+      initial={{ filter: "blur(10px)", opacity: 0, y: 50 }}
+      animate={{
+        filter: ["blur(10px)", "blur(5px)", "blur(0px)"],
+        opacity: [0, 0.5, 1],
+        y: [50, -5, 0],
+      }}
+      transition={{
+        duration: 0.7,
+        times: [0, 0.5, 1],
+        ease: "easeOut",
+        delay,
+      }}
+      className={`inline-block mr-[0.18em] ${italic ? "font-serif italic font-normal" : ""}`}
+    >
+      {children}
+    </motion.span>
   );
 }
-
-/* ------- component --------------------------------------------------- */
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -47,16 +50,47 @@ export function Hero() {
     <section
       ref={ref}
       id="home"
-      className="relative isolate overflow-hidden pt-24 md:pt-28 lg:pt-32 pb-24 md:pb-28"
+      className="relative isolate min-h-screen overflow-hidden bg-paper"
     >
-      {/* ambient backdrop */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-0 bg-grid opacity-100" />
-        <div className="absolute -top-40 left-1/2 h-[680px] w-[1100px] -translate-x-1/2 rounded-[50%] bg-[radial-gradient(closest-side,rgba(90,63,255,0.08),rgba(58,100,255,0.05)_45%,transparent_75%)] blur-2xl" />
+      {/* Light fallback while the video streams in — soft warm cream */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          background:
+            "radial-gradient(ellipse 80% 60% at 50% 35%, rgba(230,200,160,0.45), transparent 55%), radial-gradient(ellipse 60% 50% at 70% 65%, rgba(220,210,200,0.30), transparent 60%), #efece5",
+        }}
+      />
+
+      {/* Background video — tonally inverted so dark space → paper / cream */}
+      <FadingVideo
+        src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260418_080021_d598092b-c4c2-4e53-8e46-94cf9064cd50.mp4"
+        className="absolute left-1/2 -translate-x-1/2 object-cover object-top z-0"
+        style={{
+          top: "-25%",
+          width: "120%",
+          height: "130%",
+          filter: "invert(1) hue-rotate(180deg) saturate(0.85)",
+        }}
+      />
+
+      {/* Soft paper wash to push the video into the brand palette */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-[1]"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(239,236,229,0.10) 0%, rgba(239,236,229,0.35) 75%, rgba(239,236,229,0.85) 100%)",
+        }}
+      />
+
+      {/* Editorial grid tiles + subtle noise grain — original Novaryn ambient backdrop */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 z-[2] overflow-hidden">
+        <div className="absolute inset-0 bg-grid opacity-80" />
         <div className="absolute inset-0 bg-noise mix-blend-multiply" />
       </div>
 
-      <Container>
+      <div className="relative z-10 mx-auto w-full max-w-[1240px] px-6 md:px-10 pt-16 md:pt-20 pb-24">
         {/* MASSIVE TYPOGRAPHY HERO */}
         <motion.h1
           style={{ opacity: opacityFade }}
@@ -153,7 +187,7 @@ export function Hero() {
             Scroll to explore
           </span>
         </motion.div>
-      </Container>
+      </div>
     </section>
   );
 }

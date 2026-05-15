@@ -15,9 +15,31 @@ const NAV = [
   { label: "Contact", href: "#contact" },
 ];
 
+function scrollToHash(href: string) {
+  if (!href.startsWith("#")) return;
+  const id = href.slice(1);
+  const el = document.getElementById(id);
+  if (!el) return;
+  const top = el.getBoundingClientRect().top + window.scrollY - 80; // account for fixed navbar
+  window.scrollTo({ top, behavior: "smooth" });
+  history.replaceState(null, "", href);
+}
+
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+    closeMenu?: boolean
+  ) => {
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      scrollToHash(href);
+      if (closeMenu) setOpen(false);
+    }
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -31,7 +53,7 @@ export function Navbar() {
       initial={{ y: -24, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed inset-x-0 top-0 z-50 flex justify-center pt-4 md:pt-5"
+      className="fixed inset-x-0 top-0 z-50 flex justify-center pt-2 md:pt-2.5"
     >
       <nav
         className={cn(
@@ -41,7 +63,12 @@ export function Navbar() {
             : "glass-light border-graphite-900/8 py-2.5"
         )}
       >
-        <a href="#home" className="flex items-center" data-cursor="hover">
+        <a
+          href="#home"
+          onClick={(e) => handleNavClick(e, "#home")}
+          className="flex items-center"
+          data-cursor="hover"
+        >
           <Logo />
         </a>
 
@@ -50,6 +77,7 @@ export function Navbar() {
             <li key={item.label}>
               <a
                 href={item.href}
+                onClick={(e) => handleNavClick(e, item.href)}
                 data-cursor="hover"
                 className="group relative inline-flex h-9 items-center px-3 text-[13.5px] text-graphite-600 transition-colors duration-200 hover:text-graphite-900"
               >
@@ -63,6 +91,7 @@ export function Navbar() {
         <div className="flex items-center gap-2">
           <a
             href="#contact"
+            onClick={(e) => handleNavClick(e, "#contact")}
             data-cursor="hover"
             className="group hidden lg:inline-flex items-center gap-1.5 rounded-full bg-graphite-900 px-4 h-9 text-[13px] font-medium text-paper transition-all duration-300 hover:bg-graphite-700"
           >
@@ -94,7 +123,7 @@ export function Navbar() {
                 <a
                   key={item.label}
                   href={item.href}
-                  onClick={() => setOpen(false)}
+                  onClick={(e) => handleNavClick(e, item.href, true)}
                   className="block rounded-xl px-4 py-3 text-sm text-graphite-700 hover:bg-graphite-900/5 hover:text-graphite-900"
                 >
                   {item.label}
@@ -102,7 +131,7 @@ export function Navbar() {
               ))}
               <a
                 href="#contact"
-                onClick={() => setOpen(false)}
+                onClick={(e) => handleNavClick(e, "#contact", true)}
                 className="mt-1 flex items-center justify-between rounded-xl bg-graphite-900 px-4 py-3 text-sm text-paper"
               >
                 Book a Call <ArrowUpRight className="h-4 w-4" />

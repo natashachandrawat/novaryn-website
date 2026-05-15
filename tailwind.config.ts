@@ -55,6 +55,8 @@ const config: Config = {
         display: ["var(--font-geist-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
         serif: ["var(--font-serif)", "ui-serif", "Georgia", "serif"],
         mono: ["var(--font-geist-mono)", "ui-monospace", "monospace"],
+        heading: ["var(--font-serif)", "ui-serif", "Georgia", "serif"],
+        body: ["var(--font-barlow)", "ui-sans-serif", "system-ui", "sans-serif"],
       },
       fontSize: {
         "display-2xl": ["clamp(4rem, 12vw, 12rem)", { lineHeight: "0.88", letterSpacing: "-0.04em", fontWeight: "500" }],

@@ -58,7 +58,7 @@ const STEPS = [
 
 export function Process() {
   return (
-    <section id="process" className="relative py-28 md:py-36">
+    <section id="process" className="relative pt-12 md:pt-16 pb-12 md:pb-16">
       <Container>
         <SectionHeader
           align="center"
@@ -102,9 +102,6 @@ export function Process() {
                       <div className="relative z-10 flex h-[68px] w-[68px] items-center justify-center rounded-2xl border border-graphite-900/12 bg-paper transition-all duration-500 group-hover:border-graphite-900 group-hover:bg-graphite-900 group-hover:text-paper">
                         <Icon className="h-5 w-5" />
                       </div>
-                      <span className="absolute -top-2 left-1/2 -translate-x-1/2 rounded-full border border-graphite-900/12 bg-paper px-2 py-0.5 font-mono text-[9.5px] uppercase tracking-[0.22em] text-graphite-500">
-                        {s.n}
-                      </span>
                     </div>
 
                     {/* card */}

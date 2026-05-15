@@ -74,7 +74,7 @@ const SERVICES = [
 
 export function Services() {
   return (
-    <section id="services" className="relative py-28 md:py-36">
+    <section id="services" className="relative pt-12 md:pt-16 pb-12 md:pb-16">
       <Container>
         <SectionHeader
           index="02"

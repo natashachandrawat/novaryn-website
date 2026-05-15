@@ -63,7 +63,7 @@ const WORKS = [
 
 export function SelectedWorks() {
   return (
-    <section id="case-studies" className="relative py-28 md:py-36">
+    <section id="case-studies" className="relative pt-12 md:pt-16 pb-12 md:pb-16">
       <Container>
         <SectionHeader
           index="03"

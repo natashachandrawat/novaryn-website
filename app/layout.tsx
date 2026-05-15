@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
-import { Instrument_Serif } from "next/font/google";
+import { Instrument_Serif, Barlow } from "next/font/google";
 import "./globals.css";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
 
@@ -10,6 +10,13 @@ const serif = Instrument_Serif({
   weight: "400",
   style: ["normal", "italic"],
   variable: "--font-serif",
+  display: "swap",
+});
+
+const barlow = Barlow({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-barlow",
   display: "swap",
 });
 
@@ -95,9 +102,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${GeistSans.variable} ${GeistMono.variable} ${serif.variable}`}
+      className={`${GeistSans.variable} ${GeistMono.variable} ${serif.variable} ${barlow.variable}`}
     >
-      <body className="min-h-screen bg-paper text-graphite-900 antialiased font-sans selection:bg-accent-indigo/30">
+      <body className="min-h-screen bg-black text-white antialiased font-body selection:bg-white/20">
         {children}
       </body>
     </html>

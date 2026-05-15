@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --bg: #efece5;
-  --fg: #0d0d0e;
+  --bg: #000;
+  --fg: #fff;
   --muted: #67655f;
   --line: rgba(13, 13, 14, 0.08);
   --line-strong: rgba(13, 13, 14, 0.14);
@@ -19,8 +19,8 @@
 
 html,
 body {
-  background: var(--bg);
-  color: var(--fg);
+  background: #000;
+  color: #fff;
 }
 
 html {
@@ -29,15 +29,85 @@ html {
 
 body {
   font-feature-settings: "ss01", "ss03", "cv11";
-  background:
-    radial-gradient(900px 600px at 80% -10%, rgba(90, 63, 255, 0.05), transparent 60%),
-    radial-gradient(800px 600px at 0% 5%, rgba(58, 100, 255, 0.04), transparent 60%),
-    #efece5;
   cursor: none;
 }
 
 @media (pointer: coarse) {
   body { cursor: auto; }
+}
+
+/* Hide native cursor on interactive elements when custom cursor is on */
+a, button, [data-cursor="hover"] {
+  cursor: none;
+}
+@media (pointer: coarse) {
+  a, button, [data-cursor="hover"] { cursor: auto; }
+}
+
+/* Liquid glass — subtle (nav, chips, cards). Tinted to the paper/cream brand palette. */
+.liquid-glass {
+  background: rgba(239, 236, 229, 0.04);
+  background-blend-mode: luminosity;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: none;
+  box-shadow: inset 0 1px 1px rgba(239, 236, 229, 0.18);
+  position: relative;
+  overflow: hidden;
+}
+.liquid-glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(
+    180deg,
+    rgba(239, 236, 229, 0.55) 0%,
+    rgba(239, 236, 229, 0.18) 20%,
+    rgba(239, 236, 229, 0) 40%,
+    rgba(239, 236, 229, 0) 60%,
+    rgba(239, 236, 229, 0.18) 80%,
+    rgba(239, 236, 229, 0.55) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Liquid glass — strong (primary CTA). Paper-tinted. */
+.liquid-glass-strong {
+  background: rgba(239, 236, 229, 0.04);
+  background-blend-mode: luminosity;
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+  border: none;
+  box-shadow:
+    4px 4px 4px rgba(0, 0, 0, 0.05),
+    inset 0 1px 1px rgba(239, 236, 229, 0.22);
+  position: relative;
+  overflow: hidden;
+}
+.liquid-glass-strong::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(
+    180deg,
+    rgba(239, 236, 229, 0.6) 0%,
+    rgba(239, 236, 229, 0.22) 20%,
+    rgba(239, 236, 229, 0) 40%,
+    rgba(239, 236, 229, 0) 60%,
+    rgba(239, 236, 229, 0.22) 80%,
+    rgba(239, 236, 229, 0.6) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 ::selection {

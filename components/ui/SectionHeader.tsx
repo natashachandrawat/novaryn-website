@@ -33,38 +33,35 @@ export function SectionHeader({
 }) {
   return (
     <div className={cn(align === "center" ? "text-center" : "", className)}>
-      {/* eyebrow row — small, restrained */}
+      {/* eyebrow row — big italic serif index, hairline rule, small mono label */}
       <motion.div
-        initial={{ opacity: 0, y: 10 }}
+        initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.4 }}
         transition={{ duration: 0.7, ease }}
         className={cn(
-          "flex items-center gap-3",
+          "flex items-baseline gap-4",
           align === "center" && "justify-center"
         )}
       >
-        <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-graphite-900">
-          ({index})
+        <span className="font-serif italic text-[clamp(2.4rem,3.4vw,3.2rem)] leading-none tracking-tight text-graphite-500">
+          {index}
         </span>
-        <span className="h-px w-10 bg-graphite-900/30" />
+        <span className="hidden h-px max-w-[140px] flex-1 bg-graphite-900/15 sm:block" />
         <span className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-graphite-500">
           {label}
         </span>
       </motion.div>
 
-      {/* title — MASSIVE */}
+      {/* title — MASSIVE. Avoid cn()/twMerge here: it was stripping text-display-xl when paired with text-balance (both are `text-*` utilities) */}
       <motion.h2
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 1, delay: 0.05, ease }}
-        className={cn(
-          "mt-10 text-display-xl font-display lowercase tracking-[-0.045em] text-graphite-900",
-          align === "center"
-            ? "mx-auto max-w-[18ch] text-balance"
-            : "max-w-[20ch]"
-        )}
+        className={`mt-12 text-display-md font-display lowercase tracking-[-0.045em] text-graphite-900 ${
+          align === "center" ? "mx-auto max-w-[18ch]" : "max-w-[20ch]"
+        }`}
       >
         {title}
       </motion.h2>

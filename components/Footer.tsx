@@ -27,7 +27,7 @@ const NAV = [
     title: "Connect",
     links: [
       { l: "Book a call", h: "#contact" },
-      { l: "Email", h: "mailto:hello@novaryn.com" },
+      { l: "Email", h: "mailto:hello@nyravon.com" },
       { l: "LinkedIn", h: "#" },
       { l: "X / Twitter", h: "#" },
     ],
@@ -47,12 +47,12 @@ export function Footer() {
               operators.
             </p>
             <a
-              href="mailto:hello@novaryn.com"
+              href="mailto:hello@nyravon.com"
               data-cursor="hover"
               className="group mt-5 inline-flex items-center gap-1.5 text-[13.5px] text-graphite-900"
             >
               <span className="relative">
-                hello@novaryn.com
+                hello@nyravon.com
                 <span className="absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-100 bg-graphite-900 transition-transform duration-300 group-hover:scale-x-0" />
               </span>
               <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />

@@ -21,7 +21,7 @@ const TECH = [
 
 export function TechStack() {
   return (
-    <section className="relative py-28 md:py-32">
+    <section className="relative pt-28 md:pt-32 pb-12 md:pb-16">
       <Container>
         <SectionHeader
           align="center"

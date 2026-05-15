@@ -6,7 +6,7 @@ import { Services } from "@/components/Services";
 import { SelectedWorks } from "@/components/SelectedWorks";
 import { Process } from "@/components/Process";
 import { About } from "@/components/About";
-import { Recognition } from "@/components/Recognition";
+// import { Recognition } from "@/components/Recognition"; // section 6 (Standards) — hidden per request
 import { CTA } from "@/components/CTA";
 import { Footer } from "@/components/Footer";
 import { CustomCursor } from "@/components/CustomCursor";
@@ -25,7 +25,7 @@ export default function Page() {
       <SelectedWorks />
       <Process />
       <About />
-      <Recognition />
+      {/* <Recognition /> */}
       <CTA />
       <Footer />
     </main>

@@ -17,7 +17,7 @@ export function CTA() {
   const y = useTransform(scrollYProgress, [0, 1], [60, -60]);
 
   return (
-    <section id="contact" ref={ref} className="relative py-28 md:py-40">
+    <section id="contact" ref={ref} className="relative pt-12 md:pt-16 pb-28 md:pb-40">
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -38,7 +38,7 @@ export function CTA() {
           <motion.div style={{ y }} className="relative will-change-transform">
             <div className="flex items-baseline gap-4">
               <span className="font-serif italic text-[clamp(2.4rem,3.4vw,3.2rem)] leading-none tracking-tight text-graphite-500">
-                07
+                06
               </span>
               <span className="hidden h-px max-w-[140px] flex-1 bg-graphite-900/15 sm:block" />
               <span className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-graphite-500">
@@ -78,7 +78,7 @@ export function CTA() {
                 className="flex flex-col items-start gap-4 lg:items-end"
               >
                 <a
-                  href="mailto:hello@novaryn.com"
+                  href="mailto:hello@nyravon.com"
                   data-cursor="hover"
                   className="group inline-flex items-center gap-3 rounded-full bg-graphite-900 px-5 py-3 text-[14.5px] font-medium tracking-tight text-paper transition-all duration-300 hover:bg-graphite-700 hover:shadow-[0_18px_50px_-12px_rgba(13,13,14,0.4)]"
                 >
@@ -88,12 +88,12 @@ export function CTA() {
                   </span>
                 </a>
                 <a
-                  href="mailto:hello@novaryn.com"
+                  href="mailto:hello@nyravon.com"
                   data-cursor="hover"
                   className="group inline-flex items-center gap-2 text-[14px] text-graphite-500 hover:text-graphite-900"
                 >
                   <Mail className="h-3.5 w-3.5" />
-                  hello@novaryn.com
+                  hello@nyravon.com
                 </a>
               </motion.div>
             </div>
