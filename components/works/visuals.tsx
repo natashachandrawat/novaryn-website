@@ -26,7 +26,7 @@ export function CRMVisual() {
         <div className="absolute inset-0 bg-grid-fine opacity-50 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
       </div>
 
-      <div className="relative flex h-full flex-col p-7 lg:p-9">
+      <div className="relative flex h-full flex-col p-4 sm:p-6 lg:p-9">
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -63,7 +63,7 @@ export function CRMVisual() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, delay: 0.1, ease }}
-          className="relative mt-3 flex-1 overflow-hidden rounded-2xl border border-graphite-900/10 bg-paper p-4"
+          className="relative mt-3 flex-1 overflow-hidden rounded-2xl border border-graphite-900/10 bg-paper p-3 sm:p-4"
         >
           <div className="flex items-center justify-between text-[11px] text-graphite-500">
             <span className="inline-flex items-center gap-1.5">
@@ -82,7 +82,7 @@ export function CRMVisual() {
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, delay: 0.25, ease }}
-          className="pointer-events-none absolute right-6 bottom-24 w-[230px] rounded-2xl border border-graphite-900 bg-graphite-900 p-3 text-paper shadow-[0_30px_60px_-20px_rgba(13,13,14,0.4)]"
+          className="pointer-events-none absolute bottom-4 right-3 w-[min(230px,calc(100%-1.5rem))] rounded-2xl border border-graphite-900 bg-graphite-900 p-2.5 text-paper shadow-[0_30px_60px_-20px_rgba(13,13,14,0.4)] sm:bottom-24 sm:right-6 sm:p-3"
         >
           <div className="flex items-center gap-2 text-[11px] font-medium text-paper">
             <span className="flex h-5 w-5 items-center justify-center rounded-md bg-paper text-graphite-900">
@@ -234,7 +234,7 @@ export function MfgVisual() {
         <div className="absolute inset-0 bg-grid-fine opacity-50 [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_75%)]" />
       </div>
 
-      <div className="relative flex h-full flex-col p-7 lg:p-8">
+      <div className="relative flex h-full flex-col p-4 sm:p-6 lg:p-8">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -444,38 +444,38 @@ export function WorkflowVisual() {
           </svg>
 
           <Node
-            x="left-[6%]"
-            y="top-1/2 -translate-y-1/2"
+            x="left-[3%] sm:left-[6%]"
+            y="top-[52%] sm:top-1/2 sm:-translate-y-1/2"
             icon={Database}
             title="Stripe"
             sub="webhook"
           />
           <Node
             x="left-1/2 -translate-x-1/2"
-            y="top-1/2 -translate-y-1/2"
+            y="top-[64%] sm:top-1/2 sm:-translate-y-1/2"
             icon={Bot}
             title="AI Score"
             sub="GPT-class"
             primary
           />
           <Node
-            x="right-[6%]"
-            y="top-1/2 -translate-y-1/2"
+            x="right-[3%] sm:right-[6%]"
+            y="top-[52%] sm:top-1/2 sm:-translate-y-1/2"
             icon={Zap}
             title="Slack"
             sub="alert"
           />
           <Node
-            x="left-[24%]"
-            y="top-[8%]"
+            x="left-[14%] sm:left-[24%]"
+            y="top-[18%] sm:top-[8%]"
             icon={Activity}
             title="Enrich"
             sub="Clearbit"
             small
           />
           <Node
-            x="right-[18%]"
-            y="bottom-[10%]"
+            x="right-[12%] sm:right-[18%]"
+            y="top-[30%] sm:bottom-[10%]"
             icon={Sparkles}
             title="Notify"
             sub="email"
@@ -488,7 +488,7 @@ export function WorkflowVisual() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.5, ease }}
-          className="flex items-center justify-between rounded-2xl border border-graphite-900/10 bg-paper px-3 py-2"
+          className="flex flex-col items-start justify-between gap-1.5 rounded-2xl border border-graphite-900/10 bg-paper px-3 py-2 sm:flex-row sm:items-center sm:gap-0"
         >
           <span className="text-[11px] text-graphite-500">
             <span className="font-mono text-graphite-400">avg</span> 1.4s end-to-end
@@ -526,33 +526,33 @@ function Node({
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: 0.2, ease }}
-      className={`absolute ${x} ${y}`}
+      className={`absolute max-sm:scale-[0.56] min-[380px]:max-sm:scale-[0.65] ${x} ${y}`}
     >
       <div
-        className={`relative flex items-center gap-2 rounded-xl border bg-paper ${
+        className={`relative flex items-center gap-2 rounded-xl border bg-paper max-sm:max-w-[84px] max-sm:gap-1 max-sm:rounded-lg min-[380px]:max-sm:max-w-[100px] ${
           primary
-            ? "border-graphite-900 px-3 py-2 shadow-[0_18px_40px_-14px_rgba(13,13,14,0.35)]"
+            ? "border-graphite-900 px-3 py-2 shadow-[0_18px_40px_-14px_rgba(13,13,14,0.35)] max-sm:px-1.5 max-sm:py-1 min-[380px]:max-sm:px-2 min-[380px]:max-sm:py-1.5"
             : small
-            ? "border-graphite-900/10 px-2 py-1.5"
-            : "border-graphite-900/10 px-2.5 py-2"
+            ? "border-graphite-900/10 px-2 py-1.5 max-sm:px-1 max-sm:py-0.5 min-[380px]:max-sm:px-1.5 min-[380px]:max-sm:py-1"
+            : "border-graphite-900/10 px-2.5 py-2 max-sm:px-1.5 max-sm:py-1 min-[380px]:max-sm:px-2 min-[380px]:max-sm:py-1.5"
         }`}
       >
         <span
           className={`flex items-center justify-center rounded-md bg-graphite-900 text-paper ${
-            primary ? "h-7 w-7" : small ? "h-5 w-5" : "h-6 w-6"
+            primary ? "h-7 w-7 max-sm:h-5 max-sm:w-5 min-[380px]:max-sm:h-6 min-[380px]:max-sm:w-6" : small ? "h-5 w-5 max-sm:h-3.5 max-sm:w-3.5 min-[380px]:max-sm:h-4 min-[380px]:max-sm:w-4" : "h-6 w-6 max-sm:h-4 max-sm:w-4 min-[380px]:max-sm:h-5 min-[380px]:max-sm:w-5"
           }`}
         >
-          <Icon className={primary ? "h-3.5 w-3.5" : "h-3 w-3"} />
+          <Icon className={primary ? "h-3.5 w-3.5 max-sm:h-2.5 max-sm:w-2.5 min-[380px]:max-sm:h-3 min-[380px]:max-sm:w-3" : "h-3 w-3 max-sm:h-2 max-sm:w-2 min-[380px]:max-sm:h-2.5 min-[380px]:max-sm:w-2.5"} />
         </span>
         <div>
           <div
             className={`font-medium tracking-tight text-graphite-900 ${
-              primary ? "text-[12.5px]" : "text-[10.5px]"
+              primary ? "text-[12.5px] max-sm:text-[9px] min-[380px]:max-sm:text-[11px]" : "text-[10.5px] max-sm:text-[8px] min-[380px]:max-sm:text-[9.5px]"
             }`}
           >
             {title}
           </div>
-          <div className="font-mono text-[9.5px] text-graphite-400">{sub}</div>
+          <div className="whitespace-nowrap font-mono text-[9.5px] text-graphite-400 max-sm:text-[7px] min-[380px]:max-sm:text-[8.5px]">{sub}</div>
         </div>
       </div>
     </motion.div>

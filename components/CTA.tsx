@@ -78,7 +78,7 @@ export function CTA() {
                 className="flex flex-col items-start gap-4 lg:items-end"
               >
                 <a
-                  href="mailto:hello@nyravon.com"
+                  href="/book-call"
                   data-cursor="hover"
                   className="group inline-flex items-center gap-3 rounded-full bg-graphite-900 px-5 py-3 text-[14.5px] font-medium tracking-tight text-paper transition-all duration-300 hover:bg-graphite-700 hover:shadow-[0_18px_50px_-12px_rgba(13,13,14,0.4)]"
                 >

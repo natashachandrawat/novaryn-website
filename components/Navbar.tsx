@@ -90,8 +90,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-2">
           <a
-            href="#contact"
-            onClick={(e) => handleNavClick(e, "#contact")}
+            href="/book-call"
             data-cursor="hover"
             className="group hidden lg:inline-flex items-center gap-1.5 rounded-full bg-graphite-900 px-4 h-9 text-[13px] font-medium text-paper transition-all duration-300 hover:bg-graphite-700"
           >
@@ -130,8 +129,7 @@ export function Navbar() {
                 </a>
               ))}
               <a
-                href="#contact"
-                onClick={(e) => handleNavClick(e, "#contact", true)}
+                href="/book-call"
                 className="mt-1 flex items-center justify-between rounded-xl bg-graphite-900 px-4 py-3 text-sm text-paper"
               >
                 Book a Call <ArrowUpRight className="h-4 w-4" />

@@ -20,7 +20,7 @@ const barlow = Barlow({
   display: "swap",
 });
 
-const TITLE = "Novaryn — AI-Powered Product Engineering for Startups";
+const TITLE = "Novaryn";
 const DESCRIPTION =
   "Novaryn is the engineering partner for funded startups and modern businesses. We design and ship MVPs, SaaS platforms, AI-powered systems and operational software.";
 
